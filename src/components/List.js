@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Movie from "./Movie";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import Search from "./Search/Search";
 
 export default function List({ type }) {
   const movieList = useRef();
@@ -14,17 +15,24 @@ export default function List({ type }) {
     });
   }, []);
   return (
-    <div className="container">
-      <h2 className="title">What's Popular</h2>
-      <Swiper className="movieList" ref={movieList} spaceBetween={20} slidesPerView={"auto"}>
-        {movies.map((item, idx) => {
-          return (
-            <SwiperSlide key={idx} className="item">
-              <Movie movieInfo={item} />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
-    </div>
+    <>
+      <div id="mainSearchBox">
+        <h3>Welcome.</h3>
+        <p>Millions of movies, TV shows and people to discover. Explore now.</p>
+        <Search />
+      </div>
+      <div className="popular">
+        <h2 className="title">What's Popular</h2>
+        <Swiper className="movieList" ref={movieList} spaceBetween={20} slidesPerView={"auto"}>
+          {movies.map((item, idx) => {
+            return (
+              <SwiperSlide key={idx} className="item">
+                <Movie movieInfo={item} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
+    </>
   );
 }
