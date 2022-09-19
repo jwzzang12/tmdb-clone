@@ -13,15 +13,15 @@ export default function Search() {
       <input
         type="text"
         spellCheck="false"
-        placeholder="Search for a movie..."
+        placeholder="Search for a movie, tv show..."
         onChange={searchHandler}
         onKeyUp={(e) => {
           if (e.key === "Enter") {
-            navigate(`/search?movie=${search}`);
+            navigate(`/search?query=${search}`);
           }
         }}
       />
-      <Link to={`/search?movie=${search}`}>
+      <Link to={`/search?query=${search}`}>
         <button className="btnSearch">Search</button>
       </Link>
     </div>

@@ -8,12 +8,13 @@ import SearchItem from "./SearchItem";
 export default function List() {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
-  const searchMovie = qs.parse(location.search, { ignoreQueryPrefix: true }).movie;
+  const searchMovie = qs.parse(location.search, { ignoreQueryPrefix: true }).query;
+
   useEffect(() => {
     axios
       .get(
         `
-    https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=1&query=${searchMovie}`
+    https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=1include_adult=false&query=${searchMovie}`
       )
       .then((res) => {
         setMovies(res.data.results);
@@ -24,8 +25,7 @@ export default function List() {
       <Search />
       <ul className="movieList">
         {movies.map((item, idx) => {
-          console.log(item);
-          return <SearchItem movieInfo={item} key={idx} className="searchItem" />;
+          return <SearchItem itemInfo={item} key={idx} className="searchItem" />;
         })}
       </ul>
     </div>
