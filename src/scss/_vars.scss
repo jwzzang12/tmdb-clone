@@ -1,3 +1,11 @@
 $main-color: #032541;
 $blue-color: #16b7db;
 $green-color: #1dd5ab;
+$linear-gradient: linear-gradient(90deg, rgba(29, 213, 171, 1) 0%, rgba(22, 183, 219, 1) 100%);
+
+@mixin text-gradient {
+  color: transparent;
+  background: linear-gradient(90deg, rgba(215, 247, 160, 1) 0%, rgba(69, 185, 158, 1) 31%, rgba(22, 183, 219, 1) 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}

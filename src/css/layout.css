@@ -47,7 +47,11 @@ button {
 #header h1 {
   font-family: "Lexend Deca";
   font-weight: 600;
+  color: transparent;
   letter-spacing: 1.5px;
+  background: linear-gradient(90deg, rgb(215, 247, 160) 0%, rgb(69, 185, 158) 31%, rgb(22, 183, 219) 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 #header h1:after {
   display: inline-block;
@@ -57,7 +61,7 @@ button {
   margin-left: 5px;
   content: "";
   border-radius: 30px;
-  background-color: #fff;
+  background-color: #16b7db;
 }
 #header .menu {
   display: flex;
@@ -102,44 +106,59 @@ button {
   padding: 12px 25px;
   font-family: inherit;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
   color: #fff;
+  background: linear-gradient(90deg, rgb(29, 213, 171) 0%, rgb(22, 183, 219) 100%);
   border-radius: 100px;
-  background-color: #1dd5ab;
 }
 
-.popular .title {
-  margin-bottom: 20px;
-  padding: 30px 40px 0px;
+.mainList .titleBox {
+  display: flex;
+  align-items: center;
+  padding-top: 30px;
+}
+.mainList .title {
+  padding: 5px 40px;
   font-size: 22px;
   font-weight: 600;
   text-align: left;
 }
-.popular .movieList {
+.mainList .movieList {
   display: flex;
-  padding: 0 40px;
+  padding: 20px 40px;
 }
-.popular .item {
-  min-width: 150px;
+.mainList .movieList .swiper-button-prev,
+.mainList .movieList .swiper-button-next {
+  display: none;
+}
+.mainList .movieList .swiper-scrollbar {
+  height: 7px;
+  background: none;
+}
+.mainList .movieList .swiper-scrollbar .swiper-scrollbar-drag {
+  background: rgba(0, 0, 0, 0.2);
+}
+.mainList .item {
   width: 150px;
+  min-width: 150px;
 }
-.popular .item .img {
+.mainList .item .img {
   width: 100%;
   overflow: hidden;
   border-radius: 10px;
   background-color: #f00;
 }
-.popular .item .img img {
+.mainList .item .img img {
   width: 100%;
 }
-.popular .item .info {
+.mainList .item .info {
   position: relative;
   margin-top: 15px;
   padding: 10px;
   letter-spacing: -0.1px;
   text-align: left;
 }
-.popular .item .info .point {
+.mainList .item .info .point {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -154,18 +173,46 @@ button {
   border-radius: 100%;
   background-color: #111;
 }
-.popular .item .info .point:after {
+.mainList .item .info .point:after {
   display: inline-block;
   font-family: "Material Icons";
   font-size: 1px;
   content: "\eb58";
 }
-.popular .item .info h3 {
+.mainList .item .info h3 {
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
 }
-.popular .item .info .release {
+.mainList .item .info .release {
   color: #555;
+  font-weight: 300;
+}
+.mainList .slideBtn {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #032541;
+  border-radius: 100px;
+}
+.mainList .slideBtn div {
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 100px;
+}
+.mainList .slideBtn div:first-child {
+  background-color: #032541;
+}
+.mainList .slideBtn div:first-child span {
+  color: transparent;
+  background: linear-gradient(90deg, rgb(215, 247, 160) 0%, rgb(69, 185, 158) 31%, rgb(22, 183, 219) 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.mainList .slideBtn div.on span {
+  color: transparent;
+  background: linear-gradient(90deg, rgb(215, 247, 160) 0%, rgb(69, 185, 158) 31%, rgb(22, 183, 219) 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 .searchResult .searchBox {
@@ -190,12 +237,12 @@ button {
   padding: 30px 40px;
 }
 .searchResult .movieList li {
-  border-radius: 8px;
-  overflow: hidden;
-  height: 150px;
   display: flex;
-  border: 1px solid #eee;
+  height: 150px;
+  overflow: hidden;
   margin-bottom: 25px;
+  border: 1px solid #eee;
+  border-radius: 8px;
 }
 .searchResult .movieList li .img {
   height: 100%;
@@ -204,8 +251,8 @@ button {
   height: 100%;
 }
 .searchResult .movieList li .info {
-  text-align: left;
   padding: 20px 15px;
+  text-align: left;
 }
 .searchResult .movieList li .info h3 {
   margin-bottom: 5px;
@@ -237,6 +284,7 @@ button {
 }
 #footer .footerMenu {
   display: flex;
+  align-items: center;
   font-size: 18px;
   font-weight: 800;
   color: #fff;
