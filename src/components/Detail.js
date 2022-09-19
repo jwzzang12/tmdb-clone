@@ -17,12 +17,10 @@ export default function Detail() {
 
   useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_MOVIE_KEY}&include_adult=false`).then((res) => {
-      console.log(res.data);
       setDetail(res.data);
       setGenres(res.data.genres);
     });
     axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}&include_adult=false`).then((res) => {
-      console.log(res.data);
       setCast(res.data.cast);
     });
   }, []);
@@ -40,18 +38,19 @@ export default function Detail() {
               (<Moment format="YYYY">{detail.release_date ? detail.release_date : detail.first_air_date}</Moment>)
             </span>
           </div>
-          <span className="release">
-            <Moment format="DD/MM/YYYY">{detail.release_date ? detail.release_date : detail.first_air_date}</Moment>
-          </span>
-
-          <span className="genres">
-            {genres.map((item, idx) => {
-              return <span key={idx}>{item.name}</span>;
-            })}
-          </span>
-          <span className="runtime">
-            {parseInt(detail.runtime / 60)}h {detail.runtime % 60}m
-          </span>
+          <div className="basicInfo">
+            <span className="release">
+              <Moment format="DD/MM/YYYY">{detail.release_date ? detail.release_date : detail.first_air_date}</Moment>
+            </span>
+            <span className="genres">
+              {genres.map((item, idx) => {
+                return <span key={idx}>{item.name}</span>;
+              })}
+            </span>
+            <span className="runtime">
+              {parseInt(detail.runtime / 60)}h {detail.runtime % 60}m
+            </span>
+          </div>
           <div className="miniMenu">
             <div className="score">
               <div className="circle">
@@ -106,8 +105,10 @@ export default function Detail() {
               return (
                 <SwiperSlide className="profile" key={idx}>
                   <img src={`https://image.tmdb.org/t/p/w185/${item.profile_path}`} alt={item.name} />
-                  <div className="castName">{item.name}</div>
-                  <span>{item.character}</span>
+                  <div className="castInfo">
+                    <div className="castName">{item.name}</div>
+                    <span>{item.character}</span>
+                  </div>
                 </SwiperSlide>
               );
             })}

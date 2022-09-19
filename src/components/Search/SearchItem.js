@@ -6,7 +6,11 @@ export default function SearchItem({ itemInfo }) {
     <Link to={`/${itemInfo.media_type}/${itemInfo.id}`}>
       <li>
         <div className="img">
-          <img src={`https://image.tmdb.org/t/p/w300/${itemInfo.poster_path}`} alt="" />
+          {itemInfo.poster_path !== null ? (
+            <img src={`https://image.tmdb.org/t/p/w300/${itemInfo.poster_path}`} alt="poster" />
+          ) : (
+            <img src={`images/null.png`} alt="null" className="null" />
+          )}
         </div>
         <div className="info">
           <h3>{itemInfo.title ? itemInfo.title : itemInfo.name}</h3>

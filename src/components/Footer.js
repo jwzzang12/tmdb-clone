@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer id="footer">
-      <img src="../images/logo.svg" alt="" />
+      <img src="images/logo.png" alt="" />
       <div className="community">JOIN THE COMMUNITY</div>
       <div className="footerMenu">
         <span>THE BASICS</span>

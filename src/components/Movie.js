@@ -11,7 +11,7 @@ export default function Movie({ itemInfo }) {
   //     console.log("aaa");
   //   }
   // });
-  console.log(`/${itemInfo.media_type}/${itemInfo.id}`);
+  // console.log(`/${itemInfo.media_type}/${itemInfo.id}`);
 
   return (
     <Link to={`/${itemInfo.media_type}/${itemInfo.id}`}>
