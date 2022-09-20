@@ -356,7 +356,7 @@ button {
       }
     }
     .basicInfo {
-      span {
+      > span {
         &:not(:last-child):after {
           margin: 0 10px;
           content: "•";

@@ -362,7 +362,7 @@ button {
 #detail .info .titleBox span {
   opacity: 0.8;
 }
-#detail .info .basicInfo span:not(:last-child):after {
+#detail .info .basicInfo > span:not(:last-child):after {
   margin: 0 10px;
   content: "•";
 }

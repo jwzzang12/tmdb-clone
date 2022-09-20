@@ -10,7 +10,8 @@ import "swiper/css/mousewheel";
 import Search from "./Search/Search";
 
 export default function List() {
-  const randomNum = parseInt(Math.random() * 25);
+  const randomNum = parseInt(Math.random() * 24);
+  console.log(randomNum);
 
   const movieList = useRef();
   const [popular, setPopular] = useState([]);
@@ -87,7 +88,7 @@ export default function List() {
           {popular.map((item, idx) => {
             return (
               <SwiperSlide key={idx} className="item">
-                <Movie itemInfo={item} />
+                <Movie itemInfo={item} type={type} />
               </SwiperSlide>
             );
           })}

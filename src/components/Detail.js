@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Moment from "react-moment";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -8,12 +8,11 @@ import { Navigation, Scrollbar, Mousewheel } from "swiper";
 
 export default function Detail() {
   const { type, id } = useParams();
-  const location = useLocation();
-  console.log(location);
   const [detail, setDetail] = useState({});
   const [genres, setGenres] = useState([]);
   const [cast, setCast] = useState([]);
   const score = parseInt(detail.vote_average * 10);
+  const runtime = `${parseInt(detail.runtime / 60)}h ${detail.runtime % 60}m`;
 
   const scoreRef = useRef();
   let color = "";
@@ -29,11 +28,12 @@ export default function Detail() {
   scoreColor();
 
   useEffect(() => {
-    axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_MOVIE_KEY}&include_adult=false`).then((res) => {
+    axios.get(`https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.REACT_APP_MOVIE_KEY}&include_adult=false`).then((res) => {
       setDetail(res.data);
       setGenres(res.data.genres);
+      // console.log(res.data);
     });
-    axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}&include_adult=false`).then((res) => {
+    axios.get(`https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}&include_adult=false`).then((res) => {
       setCast(res.data.cast);
     });
   }, []);
@@ -46,7 +46,7 @@ export default function Detail() {
         </div>
         <div className="info">
           <div className="titleBox">
-            <h3>{detail.title}</h3>
+            <h3>{detail.title ? detail.title : detail.name}</h3>
             <span>
               (<Moment format="YYYY">{detail.release_date ? detail.release_date : detail.first_air_date}</Moment>)
             </span>
@@ -60,9 +60,7 @@ export default function Detail() {
                 return <span key={idx}>{item.name}</span>;
               })}
             </span>
-            <span className="runtime">
-              {parseInt(detail.runtime / 60)}h {detail.runtime % 60}m
-            </span>
+            <span className="runtime">{detail.runtime ? runtime : `${detail.episode_run_time}m`}</span>
           </div>
           <div className="miniMenu">
             <div className="score">
@@ -117,7 +115,11 @@ export default function Detail() {
             .map((item, idx) => {
               return (
                 <SwiperSlide className="profile" key={idx}>
-                  <img src={`https://image.tmdb.org/t/p/w185/${item.profile_path}`} alt={item.name} />
+                  {item.profile_path ? (
+                    <img src={`https://image.tmdb.org/t/p/w185/${item.profile_path}`} alt={item.name} />
+                  ) : (
+                    <img src={`images/null.png`} alt={item.name} className="null" />
+                  )}
                   <div className="castInfo">
                     <div className="castName">{item.name}</div>
                     <span>{item.character}</span>

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { useEffect, useRef } from "react";
 
-export default function Movie({ itemInfo }) {
+export default function Movie({ itemInfo, type }) {
   const rating = parseInt(itemInfo.vote_average * 10);
   const ratingRef = useRef();
   let color = "";
@@ -16,9 +16,8 @@ export default function Movie({ itemInfo }) {
     } else return (color = "#555");
   };
   ratingColor();
-  // console.log(`/${itemInfo.media_type}/${itemInfo.id}`);
   return (
-    <Link to={`/${itemInfo.media_type}/${itemInfo.id}`}>
+    <Link to={itemInfo.media_type ? `/${itemInfo.media_type}/${itemInfo.id}` : `/${type}/${itemInfo.id}`}>
       <div className="img">
         <img src={`https://image.tmdb.org/t/p/w300/${itemInfo.poster_path}`} alt="poster" />
       </div>
