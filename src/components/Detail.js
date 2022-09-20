@@ -35,6 +35,7 @@ export default function Detail() {
     });
     axios.get(`https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}&include_adult=false`).then((res) => {
       setCast(res.data.cast);
+      console.log(res.data.cast);
     });
   }, []);
 
