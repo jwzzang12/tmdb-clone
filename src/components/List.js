@@ -10,12 +10,20 @@ import "swiper/css/mousewheel";
 import Search from "./Search/Search";
 
 export default function List() {
+  const randomNum = parseInt(Math.random() * 25);
+
   const movieList = useRef();
   const [popular, setPopular] = useState([]);
   const [trending, setTrending] = useState([]);
   const [backdrop, setBackdrop] = useState(0);
+
   const [type, setType] = useState("movie");
   const [time, setTime] = useState("day");
+  const [movieActive, setMovieActive] = useState(true);
+  const [tvActives, setTvActives] = useState(false);
+  const [dayActive, setDayActive] = useState(true);
+  const [weekActives, setWeekActives] = useState(false);
+
   useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/${type}/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}&page=1`).then((res) => {
       setPopular(res.data.results);
@@ -32,7 +40,6 @@ export default function List() {
         setBackdrop(res.data.results[randomNum]);
       });
   }, [type, time]);
-  const randomNum = parseInt(Math.random() * 25);
   return (
     <>
       <div id="mainSearchBox">
@@ -45,23 +52,25 @@ export default function List() {
         <div className="titleBox">
           <h2 className="title">What's Popular</h2>
           <div className="slideBtn">
-            <div>
-              <span
-                onClick={() => {
-                  setType("movie");
-                }}
-              >
-                In Cinema
-              </span>
+            <div
+              className={movieActive ? "on" : ""}
+              onClick={() => {
+                setType("movie");
+                setMovieActive(true);
+                setTvActives(false);
+              }}
+            >
+              <span>In Cinema</span>
             </div>
-            <div>
-              <span
-                onClick={() => {
-                  setType("tv");
-                }}
-              >
-                On TV
-              </span>
+            <div
+              className={tvActives ? "on" : ""}
+              onClick={() => {
+                setType("tv");
+                setMovieActive(false);
+                setTvActives(true);
+              }}
+            >
+              <span>On TV</span>
             </div>
           </div>
         </div>
@@ -88,23 +97,25 @@ export default function List() {
         <div className="titleBox">
           <h2 className="title">Trending</h2>
           <div className="slideBtn">
-            <div>
-              <span
-                onClick={() => {
-                  setTime("day");
-                }}
-              >
-                Today
-              </span>
+            <div
+              className={dayActive ? "on" : ""}
+              onClick={() => {
+                setTime("day");
+                setDayActive(true);
+                setWeekActives(false);
+              }}
+            >
+              <span>Today</span>
             </div>
-            <div>
-              <span
-                onClick={() => {
-                  setTime("week");
-                }}
-              >
-                This Week
-              </span>
+            <div
+              className={weekActives ? "on" : ""}
+              onClick={() => {
+                setTime("week");
+                setDayActive(false);
+                setWeekActives(true);
+              }}
+            >
+              <span>This Week</span>
             </div>
           </div>
         </div>

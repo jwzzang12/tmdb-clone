@@ -191,6 +191,7 @@ button {
         border: 2px solid;
         border-radius: 100%;
         background-color: #111;
+        outline: 2px solid #111;
         &:after {
           display: inline-block;
           font-family: "Material Icons";
@@ -218,13 +219,8 @@ button {
       display: inline-block;
       padding: 5px 20px;
       border-radius: 100px;
-      &:first-child {
-        background-color: $main-color;
-        span {
-          @include text-gradient;
-        }
-      }
       &.on {
+        background-color: $main-color;
         span {
           @include text-gradient;
         }
@@ -396,8 +392,10 @@ button {
         font-size: 30px;
         font-weight: 400;
         color: #fff;
+        border: 4px solid;
         background-color: $main-color;
         border-radius: 100%;
+        outline: 3px solid $main-color;
         .material-icons {
           font-size: 1px;
         }

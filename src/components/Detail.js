@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import Moment from "react-moment";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,6 +14,19 @@ export default function Detail() {
   const [genres, setGenres] = useState([]);
   const [cast, setCast] = useState([]);
   const score = parseInt(detail.vote_average * 10);
+
+  const scoreRef = useRef();
+  let color = "";
+  const scoreColor = () => {
+    if (score > 69) {
+      return (color = "#33d473");
+    } else if (score > 39) {
+      return (color = "#cfcf17");
+    } else if (score > 0) {
+      return (color = "#db3535");
+    } else return (color = "#555");
+  };
+  scoreColor();
 
   useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_MOVIE_KEY}&include_adult=false`).then((res) => {
@@ -53,7 +66,7 @@ export default function Detail() {
           </div>
           <div className="miniMenu">
             <div className="score">
-              <div className="circle">
+              <div className="circle" ref={scoreRef} style={(scoreRef.style = { borderColor: color })}>
                 {score}
                 <span class="material-icons">percent</span>
               </div>

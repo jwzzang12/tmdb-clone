@@ -199,6 +199,7 @@ button {
   border: 2px solid;
   border-radius: 100%;
   background-color: #111;
+  outline: 2px solid #111;
 }
 .mainList .item .info .point:after {
   display: inline-block;
@@ -226,14 +227,8 @@ button {
   padding: 5px 20px;
   border-radius: 100px;
 }
-.mainList .slideBtn div:first-child {
+.mainList .slideBtn div.on {
   background-color: #032541;
-}
-.mainList .slideBtn div:first-child span {
-  color: transparent;
-  background: linear-gradient(90deg, rgb(215, 247, 160) 0%, rgb(69, 185, 158) 31%, rgb(22, 183, 219) 50%);
-  background-clip: text;
-  -webkit-background-clip: text;
 }
 .mainList .slideBtn div.on span {
   color: transparent;
@@ -396,8 +391,10 @@ button {
   font-size: 30px;
   font-weight: 400;
   color: #fff;
+  border: 4px solid;
   background-color: #032541;
   border-radius: 100%;
+  outline: 3px solid #032541;
 }
 #detail .miniMenu .score .circle .material-icons {
   font-size: 1px;
