@@ -1,6 +1,6 @@
 import axios from "axios";
 import qs from "qs";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Search from "./Search";
 import SearchItem from "./SearchItem";

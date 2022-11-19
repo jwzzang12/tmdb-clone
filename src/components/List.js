@@ -11,7 +11,6 @@ import Search from "./Search/Search";
 
 export default function List() {
   const randomNum = parseInt(Math.random() * 24);
-  console.log(randomNum);
 
   const movieList = useRef();
   const [popular, setPopular] = useState([]);
@@ -47,7 +46,7 @@ export default function List() {
         <h3>Welcome.</h3>
         <p>Millions of movies, TV shows and people to discover. Explore now.</p>
         <Search />
-        <div className="bg" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${backdrop.backdrop_path})` }}></div>
+        <div className="bg" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${backdrop && backdrop.backdrop_path})` }}></div>
       </div>
       <div className="popular mainList">
         <div className="titleBox">

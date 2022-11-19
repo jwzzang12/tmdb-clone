@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 export default function Movie({ itemInfo, type }) {
   const rating = parseInt(itemInfo.vote_average * 10);
