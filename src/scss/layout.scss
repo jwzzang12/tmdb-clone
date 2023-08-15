@@ -1,7 +1,7 @@
-@import "_vars";
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import '_vars';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .blind {
   display: none;
@@ -12,8 +12,11 @@
   box-sizing: border-box;
   text-align: left;
 }
+a {
+  cursor: pointer;
+}
 body {
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 14px;
 }
 a {
@@ -41,7 +44,7 @@ button {
   color: #fff;
   background-color: $main-color;
   h1 {
-    font-family: "Lexend Deca";
+    font-family: 'Lexend Deca';
     font-weight: 600;
     color: transparent;
     letter-spacing: 1.5px;
@@ -54,16 +57,9 @@ button {
       height: 20px;
       margin-right: 30px;
       margin-left: 5px;
-      content: "";
+      content: '';
       border-radius: 30px;
       background-color: $blue-color;
-    }
-  }
-  .menu {
-    display: flex;
-    align-items: center;
-    li {
-      margin-right: 30px;
     }
   }
 }
@@ -93,7 +89,7 @@ button {
       position: absolute;
       top: 0;
       left: 0;
-      content: "";
+      content: '';
       background-color: rgba($main-color, 0.5);
     }
   }
@@ -129,6 +125,7 @@ button {
       font-weight: 700;
       color: #fff;
       background: $linear-gradient;
+      cursor: pointer;
       border-radius: 100px;
     }
   }
@@ -185,7 +182,7 @@ button {
         position: absolute;
         top: -35px;
         left: 10%;
-        font-family: "Lexend Deca";
+        font-family: 'Lexend Deca';
         font-weight: 400;
         color: #fff;
         border: 2px solid;
@@ -194,9 +191,9 @@ button {
         outline: 2px solid #111;
         &:after {
           display: inline-block;
-          font-family: "Material Icons";
+          font-family: 'Material Icons';
           font-size: 1px;
-          content: "\eb58";
+          content: '\eb58';
         }
       }
       h3 {
@@ -215,6 +212,7 @@ button {
     font-weight: 600;
     border: 1px solid $main-color;
     border-radius: 100px;
+    cursor: pointer;
     div {
       display: inline-block;
       padding: 5px 20px;
@@ -296,6 +294,7 @@ button {
   justify-content: center;
   align-items: center;
   padding: 30px;
+  cursor: default;
   background-color: $main-color;
   img {
     width: 10%;
@@ -359,7 +358,7 @@ button {
       > span {
         &:not(:last-child):after {
           margin: 0 10px;
-          content: "•";
+          content: '•';
         }
       }
     }
@@ -367,7 +366,7 @@ button {
       span {
         &:not(:last-child):after {
           margin-right: 3px;
-          content: ",";
+          content: ',';
         }
       }
     }
@@ -388,7 +387,7 @@ button {
         width: 70px;
         height: 70px;
         margin-right: 10px;
-        font-family: "Lexend Deca";
+        font-family: 'Lexend Deca';
         font-size: 30px;
         font-weight: 400;
         color: #fff;
@@ -451,7 +450,7 @@ button {
       position: absolute;
       top: 0;
       left: 0;
-      content: "";
+      content: '';
       background-color: rgba(0, 0, 0, 0.7);
     }
   }

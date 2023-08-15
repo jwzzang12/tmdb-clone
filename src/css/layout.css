@@ -13,6 +13,10 @@
   text-align: left;
 }
 
+a {
+  cursor: pointer;
+}
+
 body {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 14px;
@@ -64,13 +68,6 @@ button {
   content: "";
   border-radius: 30px;
   background-color: #16b7db;
-}
-#header .menu {
-  display: flex;
-  align-items: center;
-}
-#header .menu li {
-  margin-right: 30px;
 }
 
 #mainSearchBox {
@@ -137,6 +134,7 @@ button {
   font-weight: 700;
   color: #fff;
   background: linear-gradient(90deg, rgb(29, 213, 171) 0%, rgb(22, 183, 219) 100%);
+  cursor: pointer;
   border-radius: 100px;
 }
 
@@ -221,6 +219,7 @@ button {
   font-weight: 600;
   border: 1px solid #032541;
   border-radius: 100px;
+  cursor: pointer;
 }
 .mainList .slideBtn div {
   display: inline-block;
@@ -304,6 +303,7 @@ button {
   justify-content: center;
   align-items: center;
   padding: 30px;
+  cursor: default;
   background-color: #032541;
 }
 #footer img {

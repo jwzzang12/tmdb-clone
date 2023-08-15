@@ -1,13 +1,13 @@
-import axios from "axios";
-import { useState, useEffect, useRef } from "react";
-import Movie from "./Movie";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Scrollbar, Mousewheel } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/scrollbar";
-import "swiper/css/mousewheel";
-import Search from "./Search/Search";
+import axios from 'axios';
+import { useState, useEffect, useRef } from 'react';
+import Movie from './Movie';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Scrollbar, Mousewheel } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar';
+import 'swiper/css/mousewheel';
+import Search from './Search/Search';
 
 export default function List() {
   const randomNum = parseInt(Math.random() * 24);
@@ -17,8 +17,8 @@ export default function List() {
   const [trending, setTrending] = useState([]);
   const [backdrop, setBackdrop] = useState(0);
 
-  const [type, setType] = useState("movie");
-  const [time, setTime] = useState("day");
+  const [type, setType] = useState('movie');
+  const [time, setTime] = useState('day');
   const [movieActive, setMovieActive] = useState(true);
   const [tvActives, setTvActives] = useState(false);
   const [dayActive, setDayActive] = useState(true);
@@ -42,20 +42,20 @@ export default function List() {
   }, [type, time]);
   return (
     <>
-      <div id="mainSearchBox">
+      <div id='mainSearchBox'>
         <h3>Welcome.</h3>
         <p>Millions of movies, TV shows and people to discover. Explore now.</p>
         <Search />
-        <div className="bg" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${backdrop && backdrop.backdrop_path})` }}></div>
+        <div className='bg' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${backdrop && backdrop.backdrop_path})` }}></div>
       </div>
-      <div className="popular mainList">
-        <div className="titleBox">
-          <h2 className="title">What's Popular</h2>
-          <div className="slideBtn">
+      <div className='popular mainList'>
+        <div className='titleBox'>
+          <h2 className='title'>What's Popular</h2>
+          <div className='slideBtn'>
             <div
-              className={movieActive ? "on" : ""}
+              className={movieActive ? 'on' : ''}
               onClick={() => {
-                setType("movie");
+                setType('movie');
                 setMovieActive(true);
                 setTvActives(false);
               }}
@@ -63,9 +63,9 @@ export default function List() {
               <span>In Cinema</span>
             </div>
             <div
-              className={tvActives ? "on" : ""}
+              className={tvActives ? 'on' : ''}
               onClick={() => {
-                setType("tv");
+                setType('tv');
                 setMovieActive(false);
                 setTvActives(true);
               }}
@@ -76,31 +76,31 @@ export default function List() {
         </div>
         <Swiper
           modules={[Navigation, Scrollbar, Mousewheel]}
-          className="movieList"
+          className='movieList'
           ref={movieList}
           spaceBetween={20}
           navigation
           mousewheel
-          slidesPerView={"auto"}
+          slidesPerView={'auto'}
           scrollbar={{ draggable: true }}
         >
           {popular.map((item, idx) => {
             return (
-              <SwiperSlide key={idx} className="item">
+              <SwiperSlide key={idx} className='item'>
                 <Movie itemInfo={item} type={type} />
               </SwiperSlide>
             );
           })}
         </Swiper>
       </div>
-      <div className="trending mainList">
-        <div className="titleBox">
-          <h2 className="title">Trending</h2>
-          <div className="slideBtn">
+      <div className='trending mainList'>
+        <div className='titleBox'>
+          <h2 className='title'>Trending</h2>
+          <div className='slideBtn'>
             <div
-              className={dayActive ? "on" : ""}
+              className={dayActive ? 'on' : ''}
               onClick={() => {
-                setTime("day");
+                setTime('day');
                 setDayActive(true);
                 setWeekActives(false);
               }}
@@ -108,9 +108,9 @@ export default function List() {
               <span>Today</span>
             </div>
             <div
-              className={weekActives ? "on" : ""}
+              className={weekActives ? 'on' : ''}
               onClick={() => {
-                setTime("week");
+                setTime('week');
                 setDayActive(false);
                 setWeekActives(true);
               }}
@@ -121,17 +121,17 @@ export default function List() {
         </div>
         <Swiper
           modules={[Navigation, Scrollbar, Mousewheel]}
-          className="movieList"
+          className='movieList'
           ref={movieList}
           spaceBetween={20}
           navigation
           mousewheel
-          slidesPerView={"auto"}
+          slidesPerView={'auto'}
           scrollbar={{ draggable: true }}
         >
           {trending.map((item, idx) => {
             return (
-              <SwiperSlide key={idx} className="item">
+              <SwiperSlide key={idx} className='item'>
                 <Movie itemInfo={item} />
               </SwiperSlide>
             );
